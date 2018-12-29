@@ -285,7 +285,7 @@ namespace DlibDotNet.Extensions
             var height = bitmap.PixelHeight;
             var buffer = bitmap.BackBuffer;
             var stride = bitmap.BackBufferStride;
-            var usePalette = bitmap.Palette != null && bitmap.Palette.Colors.Count == 256;
+            var usePalette = bitmap.Palette?.Colors.Count == 256;
 
             if (!usePalette)
             {
@@ -304,7 +304,7 @@ namespace DlibDotNet.Extensions
             var height = bitmap.PixelHeight;
             var buffer = bitmap.BackBuffer;
             var stride = bitmap.BackBufferStride;
-            var usePalette = bitmap.Palette != null && bitmap.Palette.Colors.Count == 256;
+            var usePalette = bitmap.Palette?.Colors.Count == 256;
 
             if (!usePalette)
             {

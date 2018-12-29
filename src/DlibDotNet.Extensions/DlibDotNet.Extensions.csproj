@@ -1,13 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+   
     <TargetFramework>netstandard2.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
 
   <ItemGroup>
-    <ProjectReference Include="../DlibDotNet/DlibDotNet.csproj" />
+    <ProjectReference Include="../DlibDotNet/DlibDotNet.csproj">
+      <Private>true</Private>
+    </ProjectReference>
   </ItemGroup>
   
   <ItemGroup>
@@ -32,9 +35,6 @@
 
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
 
 
 </Project>

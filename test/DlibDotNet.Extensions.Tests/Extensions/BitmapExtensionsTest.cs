@@ -137,14 +137,18 @@ namespace DlibDotNet.Extensions.Tests.Extensions
         {
             var path = this.GetDataFile($"{LoadTarget}.png");
 
-            var rgb = new Bitmap(path.FullName);
+            var rgb = new Bitmap(path.FullName) as Bitmap;
             var argb = To32Rgb(rgb, false);
+
+            Assert.IsNotNull(rgb);
+            Assert.IsNotNull(argb);
 
             var tests = new[]
             {
                 new { Source = rgb,   ExpectResult = PixelFormat.Format8bppIndexed },
                 new { Source = argb,  ExpectResult = PixelFormat.Format8bppIndexed }
             };
+
 
             foreach (GrayscalLumaCoefficients value in Enum.GetValues(typeof(GrayscalLumaCoefficients)))
                 foreach (var output in tests)

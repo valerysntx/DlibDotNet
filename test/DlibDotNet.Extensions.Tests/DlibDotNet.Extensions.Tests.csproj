@@ -1,14 +1,24 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
 
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="data\Lenna.png" />
+  </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../src/DlibDotNet.Extensions/DlibDotNet.Extensions.csproj" />
+    <Content Include="data\Lenna.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="../../src/DlibDotNet.Extensions/DlibDotNet.Extensions.csproj" IncludeAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,24 +34,11 @@
 
   <ItemGroup>
 
-    <Reference Include="PresentationCore">
-      <HintPath>PresentationCore.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="PresentationFramework">
-      <HintPath>PresentationFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Xaml">
-      <HintPath>System.Xaml.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-
+  
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
-
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy ..\..\nuget\runtimes\win-x64\native\*.dll $(OutDir)&#xD;&#xA;&#xD;&#xA;" />
+  </Target>
 
 </Project>
